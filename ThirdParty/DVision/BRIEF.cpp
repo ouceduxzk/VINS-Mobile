@@ -17,7 +17,7 @@
 
 using namespace std;
 using namespace DVision;
-
+using namespace cv;
 // ----------------------------------------------------------------------------
 
 BRIEF::BRIEF(int nbits, int patch_size, Type type):
@@ -51,7 +51,7 @@ void BRIEF::compute(const cv::Mat &image,
     cv::Mat aux;
     if(image.depth() == 3)
     {
-      cv::cvtColor(image, aux, CV_RGB2GRAY);
+      cv::cvtColor(image, aux, cv::COLOR_RGB2GRAY);
     }
     else
     {

@@ -10,6 +10,7 @@
 #define vins_pnp_hpp
 
 #include <stdio.h>
+#include <opencv2/core/eigen.hpp>
 #include "utility.hpp"
 #include "projection_facor.hpp"
 #include "pose_local_parameterization.hpp"
@@ -17,7 +18,6 @@
 #include <ceres/ceres.h>
 #include "imu_factor_pnp.h"
 #include "perspective_factor.hpp"
-#include <opencv2/core/eigen.hpp>
 #include <map>
 #include <vector>
 

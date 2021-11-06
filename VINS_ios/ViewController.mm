@@ -382,7 +382,7 @@ Matrix3d pnp_R;
         
         if(lateast_imu_time <= 0)
         {
-            cv::cvtColor(image, image, CV_BGRA2RGB);
+            cv::cvtColor(image, image, cv::COLOR_BGRA2RGB);
             cv::flip(image,image,-1);
             return;
         }
@@ -433,7 +433,7 @@ Matrix3d pnp_R;
         prevTime = mach_absolute_time();
         
         cv::Mat gray;
-        cv::cvtColor(input_frame, gray, CV_RGBA2GRAY);
+        cv::cvtColor(input_frame, gray, cv::COLOR_RGBA2GRAY);
         cv::Mat img_with_feature;
         cv::Mat img_equa;
         cv::Ptr<cv::CLAHE> clahe = cv::createCLAHE();
@@ -538,13 +538,13 @@ Matrix3d pnp_R;
                 vins.drawresult.startInit = true;
                 vins.drawresult.drawAR(vins.imageAI, vins.correct_point_cloud, lateast_P, lateast_R);
                 
-                cv::cvtColor(image, tmp, CV_RGBA2BGR);
+                cv::cvtColor(image, tmp, COLOR_RGBA2BGR);
                 cv::Mat mask;
                 cv::Mat imageAI = vins.imageAI;
                 if(!imageAI.empty())
-                    cv::cvtColor(imageAI, mask, CV_RGB2GRAY);
+                    cv::cvtColor(imageAI, mask, COLOR_RGB2GRAY);
                 imageAI.copyTo(tmp,mask);
-                cv::cvtColor(tmp, image, CV_BGRA2BGR);
+                cv::cvtColor(tmp, image, COLOR_BGRA2BGR);
             }
             if(DEBUG_MODE)
             {
@@ -555,7 +555,7 @@ Matrix3d pnp_R;
                 cv::flip(image,tmp2,-1);
                 image = tmp2;
                 if(vins.solver_flag != VINS::NON_LINEAR || !start_show)
-                    cv::cvtColor(image, image, CV_RGBA2BGR);
+                    cv::cvtColor(image, image, COLOR_RGBA2BGR);
             }
         }
         else //show VINS
@@ -571,16 +571,16 @@ Matrix3d pnp_R;
             
             cv::Mat down_origin_image;
             cv::resize(image.t(), down_origin_image, cv::Size(200, 150));
-            cv::cvtColor(down_origin_image, down_origin_image, CV_BGRA2RGB);
+            cv::cvtColor(down_origin_image, down_origin_image, COLOR_BGRA2RGB);
             cv::flip(down_origin_image,down_origin_image,0);
             cv::Mat imageROI;
             imageROI = tmp2(cv::Rect(10,COL - down_origin_image.rows- 10, down_origin_image.cols,down_origin_image.rows));
             cv::Mat mask;
-            cv::cvtColor(down_origin_image, mask, CV_RGB2GRAY);
+            cv::cvtColor(down_origin_image, mask, COLOR_RGB2GRAY);
             down_origin_image.copyTo(imageROI, mask);
             
             
-            cv::cvtColor(tmp2, image, CV_BGRA2BGR);
+            cv::cvtColor(tmp2, image, COLOR_BGRA2BGR);
             cv::flip(image,tmp2,1);
             if (isNeedRotation)
                 image = tmp2.t();
@@ -589,7 +589,7 @@ Matrix3d pnp_R;
         TE(visualize);
     } else {
         // Not capturing, means not started yet
-        cv::cvtColor(image, image, CV_BGRA2RGB);
+        cv::cvtColor(image, image, COLOR_BGRA2RGB);
         cv::flip(image,image,-1);
         //BOOL isNeedRotation = image.size() != frameSize;
         //if (isNeedRotation)

@@ -19,10 +19,10 @@
 #include "marginalization_factor.hpp"
 #include "imu_factor.h"
 #include "draw_result.hpp"
-#include <opencv2/core/eigen.hpp>
 #include "inital_sfm.hpp"
 #include "initial_aligment.hpp"
 #include "motion_estimator.hpp"
+#include <opencv2/core/eigen.hpp>
 
 extern bool LOOP_CLOSURE;
 struct RetriveData
